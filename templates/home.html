@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+  </head>
+  <body>
+    <!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body>
+    <div class="container">
+      <div>
+        <h3 class="text-center">Student Lists</h3>
+      </div>
+      <a href="{% url 'addstudentpage' %}" class="btn btn-success">Add Student</a>
+      <table class="table">
+          <thead>
+              <tr>
+                  <th>ID</th>
+                  <th>Username</th>
+                  <th>Full Name</th>
+                  <th>Email</th>
+                  <th>Mobile Number</th>
+                  <th>Profile Image</th>
+                  <th></th>
+                  <th>Actions</th>
+              </tr>
+          </thead>
+        <tbody>
+          {% for i in students %}
+            <tr>
+              <td>{{i.id}}</td>
+              <td>{{i.username}}</td>
+              <td>{{i.fullname}}</td>
+              <td>{{i.email}}</td>
+              <td>{{i.phone_number}}</td>
+              <td>
+                    {% if i.profilepic %}
+                    <a href="{{i.profilepic.url}}" target="_blank">
+                    <img src="{{i.profilepic.url}}" alt="" width="50px">
+                    </a>
+                    {% endif %}
+                <td>
+              <td>
+                <a href="{% url 'editPage' i.id %}" class="btn btn-success"><small><i class="fas fa-pen"></i></small></a>
+                <a href="{% url 'deletestudent' i.id%}" class="btn btn-danger"><small><i class="fas fa-trash"></i></small></a>
+              </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+  </body>
+</html>
